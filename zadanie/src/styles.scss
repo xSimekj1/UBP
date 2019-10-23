@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    background-image: url('assets/background.jpg');
+    overflow-y: hidden;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    min-width: 300px;
+    min-height: 300px;
+    padding: 0px 50px;
+    background-color: #f7f7f7;
+    border-radius: 15px;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+}
+
+.btn {
+
+}
+
+.input-btn {
+    background: linear-gradient(262deg, #ff7854, #fd267d);
+    box-shadow: 0 1px 6px 0 rgba(0,0,0,.27);
+    padding: 10px 25px;
+    border-radius: 100px;
+    color: white;
+    &:hover {
+        box-shadow: 0 3px 12px 0 rgba(0,0,0,.27);
+        color: #f7f7f7;
+        transition: 0.3s;
+    }
+}
+
+.text-large {
+    font-size: large;
+    padding: 15px 35px;
+}
