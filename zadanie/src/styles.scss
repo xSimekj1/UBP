@@ -13,6 +13,9 @@ body {
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     min-width: 300px;
     min-height: 300px;
     padding: 0px 50px;
@@ -25,11 +28,27 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 300px;
+    padding: 25px;
 }
 
-.btn {
+input[type=text] {
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,.42);
+    border-bottom-color: rgba(0,0,0,.42);
+    padding: 15px 10px 2px;
+    background-color: #f7f7f7;
+    &:focus {
+        outline: none;
+        background-color: #fff;
+        border-bottom-color: #6200ee;
+        border-radius: 5px 5px 0 0 ;
+        transition: 0.3s;
+    }
+}
 
+.flex-center {
+    display: flex;
+    align-items: center;
 }
 
 .input-btn {
@@ -48,5 +67,23 @@ body {
 
 .text-large {
     font-size: large;
-    padding: 15px 35px;
+    padding: 10px 35px;
 }
+
+// Loading animation
+.loader {
+    transition: 0.5s;
+    position: relative;
+    right: -25px;
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #777; /* Blue */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
