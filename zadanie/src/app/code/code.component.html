@@ -5,7 +5,7 @@
     <div class="wrapper">
         <label class="input-btn text-large flex-center" for="file">
             <span>Nahraj súbor</span>
-            <div class="loader"></div>
+            <div *ngIf="loading" class="loader"></div>
         </label>
         <input id="file" type="file" hidden>
     </div>

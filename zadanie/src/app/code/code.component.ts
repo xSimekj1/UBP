@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EncryptService } from '../_services/encrypt.service';
 
 @Component({
   selector: 'app-code',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CodeComponent implements OnInit {
 
-  constructor() { }
+  loading: boolean;
+
+  constructor(public cryptingService: EncryptService) { }
 
   ngOnInit() {
+    this.loading = false;
+  }
+
+  callApi() {
+    this.cryptingService.getFile().subscribe(Response => {
+      console.log(Response);
+    });
   }
 
 }
