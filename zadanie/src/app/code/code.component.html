@@ -9,5 +9,15 @@
         </label>
         <input id="file" type="file" hidden>
     </div>
+
     <button (click)="test()">test</button>
+
+    <div class="wrapper">
+        <label class="input-btn text-large flex-center" for="api">
+            <span>Volanie na BE</span>
+            <!-- <div *ngIf="loading" class="loader"></div> -->
+        </label>
+        <button id="api" (click)="callApi()" hidden></button>
+    </div>
+
 </div>
