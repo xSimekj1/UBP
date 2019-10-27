@@ -52,17 +52,26 @@ input[type=text] {
 }
 
 .input-btn {
-    background: linear-gradient(262deg, #ff7854, #fd267d);
+    min-height: 35px;
     box-shadow: 0 1px 6px 0 rgba(0,0,0,.27);
     padding: 10px 25px;
     border-radius: 100px;
-    cursor: pointer;
     color: white;
     &:hover {
         box-shadow: 0 3px 12px 0 rgba(0,0,0,.27);
         color: #f7f7f7;
         transition: 0.3s;
     }
+}
+
+.input-disabled {
+    background: #777;
+    cursor: default;
+}
+
+.input-enabled {
+    background: linear-gradient(262deg, #ff7854, #fd267d);
+    cursor: pointer;
 }
 
 .text-large {
@@ -75,8 +84,8 @@ input[type=text] {
     transition: 0.5s;
     position: relative;
     right: -25px;
-    border: 8px solid #f3f3f3; /* Light grey */
-    border-top: 8px solid #777; /* Blue */
+    border: 8px solid #ff7854; /* Light grey */
+    border-top: 8px solid #fd267d; /* Blue */
     border-radius: 50%;
     width: 20px;
     height: 20px;
@@ -86,4 +95,10 @@ input[type=text] {
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+  }
+
+  .line {
+      width: 100%;
+      height: 0.8px;
+      background-color: #777;
   }

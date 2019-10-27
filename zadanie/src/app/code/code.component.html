@@ -1,23 +1,22 @@
 <div class="container">
-    <div class="wrapper">
+    <!-- <div class="wrapper">
         <input id="text" type="text" class="text-large" placeholder="Verejný klúč">
-    </div>
+    </div> -->
     <div class="wrapper">
-        <label class="input-btn text-large flex-center" for="file">
-            <span>Nahraj súbor</span>
-            <div *ngIf="loading" class="loader"></div>
+        <label class="input-btn text-large flex-center" for="encrypt" [ngClass]="isEncrypting()">
+            <span>Zašifruj súbor</span>
+            <div *ngIf="encryptLoading" class="loader"></div>
         </label>
-        <input id="file" type="file" hidden>
+        <input id="encrypt" type="file" (change)="encryptFile($event.target.files)"
+         hidden>
     </div>
-
-    <button (click)="test()">test</button>
-
+    <span class="line"></span>
     <div class="wrapper">
-        <label class="input-btn text-large flex-center" for="api">
-            <span>Volanie na BE</span>
-            <!-- <div *ngIf="loading" class="loader"></div> -->
+        <label class="input-btn text-large flex-center" for="decrypt" [ngClass]="isEncrypting()">
+            <span>Odšifruj súbor</span>
+            <div *ngIf="decryptLoading" class="loader"></div>
         </label>
-        <button id="api" (click)="callApi()" hidden></button>
+        <input id="decrypt" type="file" (change)="decryptFile($event.target.files)" hidden>
     </div>
 
 </div>
