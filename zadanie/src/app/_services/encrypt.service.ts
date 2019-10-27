@@ -24,4 +24,16 @@ export class EncryptService {
   public decrypt() {
     return this.http.post(this.apiUrl + 'decrypt/', null);
   }
+
+  public testCall() {
+    
+    this.http.get<string>('http://localhost:9090/api/' + 'test', {responseType:'text' }).subscribe(
+      next => {
+        console.log(next);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
 }

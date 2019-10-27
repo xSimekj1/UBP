@@ -22,4 +22,8 @@ export class CodeComponent implements OnInit {
     });
   }
 
+  test() {
+    this.cryptingService.testCall();
+  }
+
 }
