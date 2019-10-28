@@ -1,7 +1,19 @@
 <div class="container">
-    <!-- <div class="wrapper">
-        <input id="text" type="text" class="text-large" placeholder="Verejný klúč">
-    </div> -->
+    <div class="flex-between">
+        <div class="key-wrapper" (click)="generateKeys()">
+            <abbr title="Generuj kľúče">
+                <img src="./assets/key-icon.svg" alt="klúč" class="icon">
+            </abbr>
+        </div>
+        <div class="download-wrapper" (click)="downloadApp()">
+            <abbr title="Stiahni offline appku">
+                <img src="./assets/download-icon.svg" alt="download" class="icon">
+            </abbr>
+        </div>
+    </div>
+    <div class="wrapper">
+        <input id="publicK" type="text" class="text-large" placeholder="Verejný klúč" [(ngModel)]="keys.publicK">
+    </div>
     <div class="wrapper">
         <label class="input-btn text-large flex-center" for="encrypt" [ngClass]="isEncrypting()">
             <span>Zašifruj súbor</span>
@@ -11,6 +23,9 @@
          hidden>
     </div>
     <span class="line"></span>
+    <div class="wrapper">
+            <input id="privateK" type="text" class="text-large" placeholder="Privátny klúč" [(ngModel)]="keys.privateK">
+        </div>
     <div class="wrapper">
         <label class="input-btn text-large flex-center" for="decrypt" [ngClass]="isEncrypting()">
             <span>Odšifruj súbor</span>

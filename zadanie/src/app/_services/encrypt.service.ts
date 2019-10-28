@@ -10,7 +10,7 @@ import { Key } from '../_models/key';
 })
 export class EncryptService {
 
-  apiUrl = 'http://localhost:9090/api/';
+  apiUrl = 'api/';
 
   constructor(private http: HttpClient) { }
 
@@ -24,6 +24,10 @@ export class EncryptService {
 
   public decrypt(data: FormData) {
     return this.http.post(this.apiUrl + 'decrypt/', data, { responseType: 'blob' });
+  }
+
+  public getOfflineApp() {
+    return this.http.get(this.apiUrl + 'offlineapp/', { responseType: 'blob' });
   }
 
 }
