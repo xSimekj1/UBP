@@ -1,0 +1,26 @@
+<div class="container keys-container">
+
+  <label class="margin-tp-btm" for="publicKey">Verejný kľúč</label>
+  <div class="textarea-wrapper">
+    <textarea name="publicK" id="publicKey" #publicKeyTextArea>{{ keyPair.publicK }}</textarea>
+    <img src="assets/copy.svg"
+          class="svg-img"
+          alt="copy-to-clipboard"
+          title="Kopírovať kľúč"
+          (click)="copyKeyToClipboard(publicKeyTextArea)">
+  </div>
+
+  <label class="margin-tp-btm" for="privateKey">Privátny kľúč</label>
+  <div class="textarea-wrapper">
+    <textarea name="privateKey" id="privateKey" #privateKeyTextArea>{{ keyPair.privateK }}</textarea>
+    <img src="assets/copy.svg"
+         class="svg-img"
+         alt="copy-to-clipboard"
+         title="Kopírovať kľúč"
+         (click)="copyKeyToClipboard(privateKeyTextArea)">
+  </div>
+
+  <div class="btn-wrapper">
+    <button class="pretify-btn" (click)="generateKeys()">Generuj kľúče</button>
+  </div>
+</div>

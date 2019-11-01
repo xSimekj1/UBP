@@ -8,12 +8,14 @@ import { CodeComponent } from './code/code.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalComponent } from './modal/modal.component';
+import { KeysComponent } from './code/keys/keys.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CodeComponent,
-    ModalComponent
+    ModalComponent,
+    KeysComponent
   ],
   imports: [
     BrowserModule,

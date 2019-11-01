@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EncryptService } from '../_services/encrypt.service';
-import { Key } from '../_models/key';
+import { KeyPair } from '../_models/key';
 import { saveAs } from 'file-saver';
-import { ModalComponent } from '../modal/modal.component';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-code',
@@ -15,22 +13,15 @@ export class CodeComponent implements OnInit {
   encryptLoading: boolean;
   decryptLoading: boolean;
 
-  bsModalRef: BsModalRef;
-
-
-  keys: Key = new Key();
+  public keys: KeyPair;
   fileToUpload: File = null;
 
-  constructor(
-    public cryptingService: EncryptService,
-    private modalService: BsModalService
-    ) {
-      this.keys = { privateK: '', publicK: '' };
-    }
+  constructor(private cryptingService: EncryptService) { }
 
   ngOnInit() {
     this.encryptLoading = false;
     this.decryptLoading = false;
+    this.keys = new KeyPair();
   }
 
   encryptFile(files: FileList) {
@@ -95,35 +86,6 @@ export class CodeComponent implements OnInit {
       const blob = new Blob([response]);
       saveAs(blob, 'offlineapp.jar');
     });
-  }
-
-  generateKeys() {
-    console.log('funguje');
-    this.cryptingService.generateKey().subscribe(
-      response => {
-        const message = [];
-
-        for (let key in response) {
-            message.push(key);
-            message.push(response[key]);
-        }
-
-        this.openNgModal('Vaše vygenerované kľúče', message);
-      },
-      err => {
-        this.encryptLoading = false;
-        alert(err);
-      }
-    );
-  }
-
-  openNgModal(title: string, message: Array<string>) {
-    const initialState = {
-      list: message,
-      title: title
-    };
-    this.bsModalRef = this.modalService.show(ModalComponent, { initialState });
-    this.bsModalRef.content.closeBtnName = 'Zavrieť';
   }
 
 }

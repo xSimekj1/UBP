@@ -1,0 +1,54 @@
+.keys-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  padding: 10px 50px 10px 50px;
+}
+
+.margin-tp-btm {
+  margin-top: .5rem;
+  margin-bottom: .3rem;
+}
+
+.textarea-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+textarea {
+  width: 90%;
+  outline: none;
+  min-height: 6rem;
+  padding: .5rem;
+}
+
+.svg-img {
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.btn-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.pretify-btn {
+  background: linear-gradient(262deg, #ff7854, #fd267d);
+  border: none;
+  border-radius: 100px;
+  color: white;
+  min-height: 35px;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.27);
+  padding: 10px 35px;
+  font-size: large;
+  width: 12rem;
+  cursor: pointer;
+  outline: none;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}

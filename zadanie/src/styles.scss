@@ -2,7 +2,6 @@
 body {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     background-image: url('assets/background-white.jpg');
-    overflow-y: hidden;
 }
 
 .center {
@@ -21,7 +20,7 @@ body {
     padding: 0px 50px;
     background-color: #f7f7f7;
     border-radius: 15px;
-    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.27);;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.27);
 }
 
 .wrapper {
@@ -64,6 +63,12 @@ input[type=text] {
     }
 }
 
+input[type="file"]:disabled {
+  background: #777;
+  cursor: default;
+  user-select: none;
+}
+
 .input-disabled {
     background: #777;
     cursor: default;
@@ -91,7 +96,7 @@ input[type=text] {
     height: 20px;
     animation: spin 2s linear infinite;
   }
-  
+
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }

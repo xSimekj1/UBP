@@ -3,43 +3,75 @@
     width: 50px;
 }
 
-.key-wrapper {
-    position: relative;
-    top: -5px;
-    left: -40px;
-    display: flex;
-    width: fit-content;
-    background-color: #d7d7d7;
-    padding: 2px 4px;
-    margin-top: 15px;
-    border-radius: 50px;
-    box-shadow: 1px 0.5px 1px 0 rgba(0, 0, 0, 0.27);
-    &:hover {
-        background-color: #bcbcbc;
-        transform: rotate(40deg);
-        transition: 0.8s;
-    }
+.half-width {
+  // width: 40%;
+  border-radius: 4px;
+}
+
+.middle {
+  width: 1px;
+  background: #999d;
+
+}
+
+.divide-sides {
+  display: flex;
+  // flex-direction: row;
+  justify-content: space-between;
+}
+
+.side-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .download-wrapper {
-    position: relative;
-    top: -5px;
-    left: 40px;
-    display: flex;
-    width: fit-content;
-    background-color: #d7d7d7;
-    padding: 2px 4px;
-    margin-top: 15px;
-    border-radius: 50px;
-    box-shadow: 1px 0.5px 1px 0 rgba(0, 0, 0, 0.27);
-    &:hover {
-        background-color: #bcbcbc;
-        transform: rotate(40deg);
-        transition: 0.8s;
-    }
+  display: inline-flex;
+  justify-content: flex-end;
 }
 
-.flex-between {
-    display: flex;
-    justify-content: space-between;
+.download-nested-wrapper {
+  cursor: pointer;
 }
+
+.svg-img {
+  width: 24px;
+  height: 24px;
+  margin-left: 5px;
+}
+
+// .key-wrapper {
+//     position: relative;
+//     top: -5px;
+//     left: -40px;
+//     display: flex;
+//     width: fit-content;
+//     background-color: #d7d7d7;
+//     padding: 2px 4px;
+//     margin-top: 15px;
+//     border-radius: 50px;
+//     box-shadow: 1px 0.5px 1px 0 rgba(0, 0, 0, 0.27);
+//     &:hover {
+//         background-color: #bcbcbc;
+//         transform: rotate(40deg);
+//         transition: 0.8s;
+//     }
+// }
+
+// .download-wrapper {
+//     position: relative;
+//     top: -5px;
+//     left: 40px;
+//     display: flex;
+//     width: fit-content;
+//     background-color: #d7d7d7;
+//     padding: 2px 4px;
+//     margin-top: 15px;
+//     border-radius: 50px;
+//     box-shadow: 1px 0.5px 1px 0 rgba(0, 0, 0, 0.27);
+//     &:hover {
+//         background-color: #bcbcbc;
+//         transform: rotate(40deg);
+//         transition: 0.8s;
+//     }
+// }
