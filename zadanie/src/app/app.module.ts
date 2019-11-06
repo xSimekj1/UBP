@@ -9,13 +9,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalComponent } from './modal/modal.component';
 import { KeysComponent } from './code/keys/keys.component';
+import { LoginComponent } from './code/login/login.component';
+import { MenuComponent } from './code/menu/menu.component';
+import { ContentComponent } from './content/content.component';
+import { SignupComponent } from './code/signup/signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CodeComponent,
     ModalComponent,
-    KeysComponent
+    KeysComponent,
+    LoginComponent,
+    MenuComponent,
+    ContentComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
