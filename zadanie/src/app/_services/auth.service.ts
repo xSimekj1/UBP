@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
@@ -39,7 +39,7 @@ export class AuthenticationService {
     this.password = null;
   }
 
-  isUserLoggedIn() {
+  isUserLoggedIn() { 
     let user = sessionStorage.getItem(this.TOKEN_NAME)
     if (user === null) return false
     return true

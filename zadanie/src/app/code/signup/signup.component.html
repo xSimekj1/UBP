@@ -4,8 +4,8 @@
     <div class="card">
       <div class="card-body">
         <form class="form-group">
-          <!-- <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
-          <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div> -->
+          <div class="alert alert-warning" *ngIf='notEqualPasswords'>{{errorMessage1}}</div> 
+          <div class="alert alert-warning" *ngIf='usedUsername'>{{errorMessage2}}</div>
           <div class="form-group">
             <label for="email">User Name :</label>
             <input type="text" class="form-control" id="username" [(ngModel)]="username" placeholder="Enter User Name"
@@ -16,7 +16,12 @@
             <input type="password" class="form-control" [(ngModel)]="password" id="password" placeholder="Enter password"
               name="password">
           </div>
-          <button (click)=handleLogin() class="btn btn-success">SignUp</button>
+          <div class="form-group">
+                <label for="pwd">Repeat Password:</label>
+                <input type="password" class="form-control" [(ngModel)]="passwordRepeat" id="passwordRepeat" placeholder="Repeat password"
+                  name="passwordRepeat">
+              </div>
+          <button (click)=handleSignUp() class="btn btn-success">SignUp</button>
         </form>
       </div>
     </div>
