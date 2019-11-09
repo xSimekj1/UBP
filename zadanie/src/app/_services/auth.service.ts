@@ -1,6 +1,10 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+
+interface Credentials {
+  username;
+  password;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -8,29 +12,30 @@ import { map } from 'rxjs/operators';
 export class AuthenticationService {
 
   // BASE_PATH: 'http://localhost:8080'
-  TOKEN_NAME = 'accessToken'
+  // private readonly url = 'http://localhost:8080/';
+  TOKEN_NAME = 'accessToken';
 
-  public username: String;
-  public password: String;
+  public username: string;
+  public password: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) { }
 
+  authenticationService(username: string, password: string) {
+    const credentials: Credentials =  {
+      username,
+      password
+    };
+    // this.url +
+    return this.http.post('api/auth/signin', credentials, { responseType: 'json' });
   }
 
-  authenticationService(username: String, password: String) {
-    let data =  {
-      "username": username,
-      "password" : password
+  authenticationServiceRegister(username: string, password: string) {
+    const credentials: Credentials =  {
+      username,
+      password
     };
-    return this.http.post('http://localhost:8080/api/auth/signin', data, { responseType: 'json' });
-  }
-
-  authenticationServiceRegister(username: String, password: String) {
-    let data =  {
-      "username": username,
-      "password" : password
-    };
-    return this.http.post('http://localhost:8080/api/auth/signup', data, { responseType: 'json' });
+    // this.url +
+    return this.http.post('api/auth/signup', credentials, { responseType: 'json' });
   }
 
   logout() {
@@ -39,11 +44,12 @@ export class AuthenticationService {
     this.password = null;
   }
 
-  isUserLoggedIn() { 
-    let user = sessionStorage.getItem(this.TOKEN_NAME)
-    if (user === null) return false
-    return true
+  isUserLoggedIn() {
+    const user = sessionStorage.getItem(this.TOKEN_NAME);
+    if (user === null) {
+      return false;
+    }
+    return true;
   }
 
-  
 }

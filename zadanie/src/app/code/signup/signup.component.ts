@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 
   username: string;
-  password : string;
-  passwordRepeat : string;
+  password: string;
+  passwordRepeat: string;
   errorMessage1 = 'Passwords do not match!';
   errorMessage2 = 'Username already in user OR insufficient password strength! TODO!';
   notEqualPasswords = false;
@@ -25,26 +25,27 @@ export class SignupComponent implements OnInit {
   }
 
   handleSignUp() {
-    if (this.checkEqualPasswords(this.password,this.passwordRepeat)){
+    if (this.checkEqualPasswords(this.password, this.passwordRepeat)) {
       this.authenticationService.authenticationServiceRegister(this.username, this.password).subscribe(
-        (data)=> {
-        if (data['success']){
-          alert("Succesfully registered!")
+        (data) => {
+        if (data['success']) {
+          alert("Succesfully registered!");
           this.router.navigate(['/login']);
-        }else{
-          alert(data['message'])
+        } else {
+          alert(data['message']);
           this.router.navigate(['/signup']);
         }
-      },() => {
+      },
+      () => {
         this.usedUsername = true;
-      });  
+      });
       this.notEqualPasswords = false;
-    }else{
+    } else {
       this.notEqualPasswords = true;
     }
   }
 
-  checkEqualPasswords(password,repeatedPassword) : boolean { 
-    return password === repeatedPassword ? true : false    
+  checkEqualPasswords(password, repeatedPassword): boolean {
+    return password === repeatedPassword;
   }
 }

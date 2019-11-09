@@ -8,24 +8,32 @@ import { KeyPair } from '../_models/key';
 })
 export class KeysService {
 
-  private readonly API_URL: string = 'http://localhost:8080/api/';
-  private TOKEN_NAME = 'accessToken'
+  // private readonly API_URL: string = 'http://localhost:8080/';
+  private readonly TOKEN_NAME = 'accessToken';
 
   constructor(private http: HttpClient) { }
 
-  public getGeneratedKeys(): Observable<KeyPair> {    
-    let headers = { Authorization: "Bearer "+this.getJWToken() } 
-    return this.http.get<KeyPair>(this.API_URL + 'generatekeys',  { headers: headers });
+  public getGeneratedKeys(): Observable<KeyPair> {
+    const headers = {
+      Authorization: 'Bearer ' + this.getJWToken()
+    };
+    // this.API_URL +
+    return this.http.get<KeyPair>('api/getkeys',  { headers });
   }
 
-  public getKeys(): Observable<KeyPair> {    
-    let headers = { Authorization: "Bearer "+this.getJWToken() } 
-    return this.http.get<KeyPair>(this.API_URL + 'getkeys',  { headers: headers });
+  public getKeys(): Observable<KeyPair> {
+    const headers = {
+      Authorization: 'Bearer ' + this.getJWToken()
+    };
+    // this.API_URL +
+    return this.http.get<KeyPair>('api/getkeys',  { headers });
   }
 
   getJWToken() {
-    let token = sessionStorage.getItem(this.TOKEN_NAME)
-    if (token === null) return ''
-    return token
+    const token = sessionStorage.getItem(this.TOKEN_NAME);
+    if (token === null) {
+      return '';
+    }
+    return token;
   }
 }

@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { CodeComponent } from './code/code.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { ModalComponent } from './modal/modal.component';
 import { KeysComponent } from './code/keys/keys.component';
 import { LoginComponent } from './code/login/login.component';
 import { MenuComponent } from './code/menu/menu.component';
@@ -18,7 +17,6 @@ import { SignupComponent } from './code/signup/signup.component';
   declarations: [
     AppComponent,
     CodeComponent,
-    ModalComponent,
     KeysComponent,
     LoginComponent,
     MenuComponent,
@@ -32,7 +30,6 @@ import { SignupComponent } from './code/signup/signup.component';
     HttpClientModule,
     ModalModule.forRoot()
   ],
-  entryComponents: [ModalComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

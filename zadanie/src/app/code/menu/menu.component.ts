@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../_services/auth.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -10,11 +10,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class MenuComponent implements OnInit {
 
   isLoggedIn = false;
-  public username: String;
+  public username: string;
 
-  constructor(private route: ActivatedRoute,
-    private router: Router,
-    private authenticationService: AuthenticationService) { }
+  constructor(private router: Router,
+              private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     this.isLoggedIn = this.authenticationService.isUserLoggedIn();
@@ -33,4 +32,5 @@ export class MenuComponent implements OnInit {
   redirectReg() {
     this.router.navigate(['./signup']);
   }
+
 }
