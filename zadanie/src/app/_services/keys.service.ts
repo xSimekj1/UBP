@@ -13,20 +13,13 @@ export class KeysService {
 
   constructor(private http: HttpClient) { }
 
-  public getGeneratedKeys(): Observable<KeyPair> {
+  public getKeys(isNewKeys: boolean): Observable<KeyPair> {
     const headers = {
       Authorization: 'Bearer ' + this.getJWToken()
     };
-    // this.API_URL +
-    return this.http.get<KeyPair>('api/getkeys',  { headers });
-  }
+    const url: string = isNewKeys ? 'generatekeys' : 'getkeys';
 
-  public getKeys(): Observable<KeyPair> {
-    const headers = {
-      Authorization: 'Bearer ' + this.getJWToken()
-    };
-    // this.API_URL +
-    return this.http.get<KeyPair>('api/getkeys',  { headers });
+    return this.http.get<KeyPair>('api/' + url, { headers });
   }
 
   getJWToken() {

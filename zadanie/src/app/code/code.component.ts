@@ -38,7 +38,7 @@ export class CodeComponent implements OnInit {
       encryptedFile => {
         this.encryptLoading = false;
         const blob = new Blob([encryptedFile]);
-        saveAs(blob, 'encrypted.' + this.getType(this.fileToUpload.name) );
+        saveAs(blob, 'encrypted.' + this.getType(this.fileToUpload.name));
       }
     );
   }

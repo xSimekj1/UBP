@@ -30,7 +30,7 @@ body {
     padding: 25px;
 }
 
-input[type=text] {
+input[type=text], input[type=password] {
     border: none;
     border-bottom: 1px solid rgba(0,0,0,.42);
     border-bottom-color: rgba(0,0,0,.42);

@@ -12,6 +12,7 @@ import { LoginComponent } from './code/login/login.component';
 import { MenuComponent } from './code/menu/menu.component';
 import { ContentComponent } from './content/content.component';
 import { SignupComponent } from './code/signup/signup.component';
+import { FileManagementComponent } from './code/file-management/file-management.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SignupComponent } from './code/signup/signup.component';
     LoginComponent,
     MenuComponent,
     ContentComponent,
-    SignupComponent
+    SignupComponent,
+    FileManagementComponent
   ],
   imports: [
     BrowserModule,

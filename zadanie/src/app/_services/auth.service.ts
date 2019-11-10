@@ -1,9 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+interface ApiResponse {
+  success: boolean;
+  message: string;
+}
+
 interface Credentials {
-  username;
-  password;
+  username: string;
+  password: string;
 }
 
 @Injectable({
@@ -13,7 +18,8 @@ export class AuthenticationService {
 
   // BASE_PATH: 'http://localhost:8080'
   // private readonly url = 'http://localhost:8080/';
-  TOKEN_NAME = 'accessToken';
+  private readonly url = 'api/auth/';
+  private readonly TOKEN_NAME = 'accessToken';
 
   public username: string;
   public password: string;
@@ -25,17 +31,27 @@ export class AuthenticationService {
       username,
       password
     };
-    // this.url +
-    return this.http.post('api/auth/signin', credentials, { responseType: 'json' });
+
+    return this.http.post(this.url + 'signin', credentials, { responseType: 'json' });
   }
 
-  authenticationServiceRegister(username: string, password: string) {
+  registerUser(username: string, password: string) {
     const credentials: Credentials =  {
       username,
       password
     };
-    // this.url +
-    return this.http.post('api/auth/signup', credentials, { responseType: 'json' });
+
+    return this.http.post<ApiResponse>(this.url + 'signup', credentials, { responseType: 'json' });
+  }
+
+  // change path later
+  public checkPasswordStrength(password: string) {
+    return this.http.post<boolean>(this.url + 'pass-strength', { password });
+  }
+
+  // change path later
+  public sendFile(password: string) {
+    return this.http.post<boolean>(this.url + 'sendfile', {password});
   }
 
   logout() {
@@ -50,6 +66,14 @@ export class AuthenticationService {
       return false;
     }
     return true;
+  }
+
+  public getJWToken() {
+    const token = sessionStorage.getItem(this.TOKEN_NAME);
+    if (token === null) {
+      return '';
+    }
+    return token;
   }
 
 }

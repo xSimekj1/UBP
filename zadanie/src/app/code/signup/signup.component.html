@@ -3,26 +3,39 @@
   <h1 class="text-center">Registration</h1>
   <div class="card">
     <div class="card-body">
-      <form class="form-group">
-        <div class="alert alert-warning" *ngIf='notEqualPasswords'>{{errorMessage1}}</div>
-        <div class="alert alert-warning" *ngIf='usedUsername'>{{errorMessage2}}</div>
-        <div class="form-group">
-          <label for="email">User Name :</label>
-          <input type="text" class="form-control" id="username" [(ngModel)]="username" placeholder="Enter User Name"
-            name="username">
+      <!-- <form class="form-group"> -->
+        <!-- <div class="alert alert-warning" *ngIf='notEqualPasswords'>{{errorMessage1}}</div>
+        <div class="alert alert-warning" *ngIf='usedUsername'>{{errorMessage2}}</div> -->
+
+        <div class="user-input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" [(ngModel)]="username">
+          <div class="warning-message-wrapper">
+            <p *ngIf="userAlreadyExists">Unfortunately, the username is already taken.</p>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="pwd">Password:</label>
-          <input type="password" class="form-control" [(ngModel)]="password" id="password" placeholder="Enter password"
-            name="password">
+
+        <div class="user-input-group">
+          <label for="password">Password</label>
+          <input type="text" id="password" [(ngModel)]="password">
+          <div class="warning-message-wrapper">
+            <p *ngIf="password.length > 0">{{ checkPassword() }}</p>
+          </div>
         </div>
-        <div class="form-group">
-              <label for="pwd">Repeat Password:</label>
-              <input type="password" class="form-control" [(ngModel)]="passwordRepeat" id="passwordRepeat" placeholder="Repeat password"
-                name="passwordRepeat">
-            </div>
-        <button (click)=handleSignUp() class="btn btn-success">SignUp</button>
-      </form>
+
+        <div class="user-input-group">
+          <label for="password-repeat">Repeat Password</label>
+          <input type="text" id="password-repeat" [(ngModel)]="passwordRepeat">
+          <div class="warning-message-wrapper" >
+            <p *ngIf="checkEqualPasswords() && passwordRepeat.length > 7">The passwords do not equal.</p>
+          </div>
+        </div>
+
+        <div class="btn-wrapper">
+          <button (click)=checkPasswordStrength() class="btn btn-warning">Check the password's strength</button>
+          <button (click)=handleSignUp() class="btn btn-success">Sign up</button>
+        </div>
+      <!-- </form> -->
     </div>
   </div>
 </div>

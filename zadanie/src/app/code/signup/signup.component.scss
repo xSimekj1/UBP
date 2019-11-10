@@ -1,0 +1,24 @@
+.user-input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-wrapper {
+  display: flex;
+  margin-top: .5rem;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.warning-message-wrapper {
+  height: 2rem;
+}
+
+.warning-message-wrapper > p {
+  color: red;
+  font-size: .75rem;
+}
+
+.btn-warning {
+  margin-right: .5rem;
+}
