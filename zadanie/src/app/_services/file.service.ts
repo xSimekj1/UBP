@@ -9,26 +9,34 @@ import { Observable } from 'rxjs';
 })
 export class FileService {
 
-  private readonly url = 'api/auth/';
+  private readonly url = 'api/';
 
   constructor(private http: HttpClient, private authService: AuthenticationService) { }
 
   public sendFile(data: FormData) {
     data.append('sender', sessionStorage.getItem('username'));
-    const headers = { Authorization: 'Bearer ' + this.authService.getJWToken() };
+    const headers = {
+      Authorization: 'Bearer ' + this.authService.getJWToken()
+    };
+
     return this.http.post<boolean>(this.url + 'sendfile', data, { headers });
   }
 
   public getFilesByUsername(): Observable<Array<FileMetadata>> {
     const username: string = sessionStorage.getItem('username');
-    console.log(username, ' from fileService');
-    const headers = { Authorization: 'Bearer ' + this.authService.getJWToken() };
+    const headers = {
+      Authorization: 'Bearer ' + this.authService.getJWToken()
+    };
+
     return this.http.get<Array<FileMetadata>>(this.url + `getfiles?username=${username}`, { headers });
   }
 
   // ?filepath=${filename}`
   public downloadFile(fileMetadata: FileMetadata) {
-    const headers = { Authorization: 'Bearer ' + this.authService.getJWToken() };
+    const headers = {
+      Authorization: 'Bearer ' + this.authService.getJWToken()
+    };
+
     return this.http.post(this.url + 'downloadfile', fileMetadata, { responseType: 'blob', headers });
   }
 
