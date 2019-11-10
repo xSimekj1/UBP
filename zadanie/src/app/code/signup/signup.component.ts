@@ -25,7 +25,9 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.authServiceRegisterSub.unsubscribe();
+    if (this.authServiceRegisterSub){
+      this.authServiceRegisterSub.unsubscribe();
+    }
   }
 
   checkEqualPasswords(): boolean {
