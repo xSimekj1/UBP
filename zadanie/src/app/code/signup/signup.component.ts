@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   handleSignUp() {
 
     if (this.password === this.passwordRepeat
-        && this.username.length >= 3
+        && this.username.length >= 4
         && this.username.length <= 15) {
       this.authServiceRegisterSub = this.authService.registerUser(this.username, this.password).subscribe(
         data => {
@@ -74,18 +74,23 @@ export class SignupComponent implements OnInit, OnDestroy {
   checkPassword(): string {
     let message = '';
 
-    if (this.password.length <= 7 && this.password.length <= 20) {
-      message += 'The password has to be longer than 7 characters but less than 20. ';
+    if (this.password.length <= 8 && this.password.length <= 20) {
+      message += 'Dĺžka hesla musí byť medzi 8 a 20 znakmi. ';
     }
 
-    let regex = new RegExp('(?=.*[a-z])(?=.*[A-Z])');
+    let regex = new RegExp('(?=.*[a-z])');
     if (!regex.test(this.password)) {
-      message += 'The password has to have at least 1 upper case character and 1 lower case. ';
+      message += 'Minimálne 1 malý znak (a-z). ';
+    }
+
+    regex = new RegExp('(?=.*[A-Z])');
+    if (!regex.test(this.password)) {
+      message += 'Minimálne 1 veľký znak (A-Z). ';
     }
 
     regex = new RegExp('(?=.*[0-9])');
     if (!regex.test(this.password)) {
-      message += 'The password has to have at least 1 numerical character. ';
+      message += 'Doplňte aspoň 1 numerický znak.';
     }
 
     return message;

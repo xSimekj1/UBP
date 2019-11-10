@@ -32,7 +32,6 @@ export class FileManagementComponent implements OnInit {
     this.fileService.getFilesByUsername().subscribe(
       filemetadata => {
         this.filesData = filemetadata;
-        console.log(filemetadata);
       },
       error => {
         // TODO: log error
