@@ -26,18 +26,26 @@
           <label for="password-repeat">Opakovať heslo</label>
           <input type="password" id="password-repeat" [(ngModel)]="passwordRepeat">
           <div class="warning-message-wrapper" >
-            <p *ngIf="checkEqualPasswords() && passwordRepeat.length > 7">Heslá sa nezhodujú.</p>
+            <p *ngIf="checkEqualPasswords() && passwordRepeat.length >= 8">Heslá sa nezhodujú.</p>
           </div>
         </div>
 
         <div class="btn-wrapper">
           <button (click)=checkPasswordStrength()
                   class="btn btn-warning"
-                  title="Umožní skontrolovať zraniteľnosť voči slovníkovému útoku">
-                  Skontrolovať zraniteľnosť hesla</button>
-          <button (click)=handleSignUp() class="btn btn-success">Sign up</button>
+                  title="Umožní skontrolovať zraniteľnosť voči slovníkovému útoku"
+                  [disabled]="checkPassword().length > 0">
+                  {{ checkPassword().length === 0 ?
+                    'Skontrolovať zraniteľnosť hesla':
+                    'Heslo je stále zraniteľné' }}</button>
+          <button (click)=handleSignUp()
+                  class="btn btn-success"
+                  [disabled]="checkEqualPasswords() || checkPassword().length > 0 || username.length === 0">
+                  Sign up</button>
         </div>
-
+        <div class="message-wrapper">
+            <p [ngStyle]="{'color': passwordIsValid ? 'green': 'red'}">{{ vulnerabilityMessage }}</p>
+        </div>
     </div>
   </div>
 </div>

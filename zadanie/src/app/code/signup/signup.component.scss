@@ -1,3 +1,7 @@
+.card-body {
+  padding: 1rem;
+}
+
 .user-input-group {
   display: flex;
   flex-direction: column;
@@ -8,6 +12,17 @@
   margin-top: .5rem;
   width: 100%;
   justify-content: flex-end;
+}
+
+.message-wrapper {
+  height: 2rem;
+  margin-top: .5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.message-wrapper > p {
+  font-size: 1rem;
 }
 
 .warning-message-wrapper {

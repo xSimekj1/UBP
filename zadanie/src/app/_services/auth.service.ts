@@ -11,6 +11,11 @@ interface Credentials {
   password: string;
 }
 
+interface PasswordMetadata {
+  valid: boolean;
+  details: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -46,12 +51,7 @@ export class AuthenticationService {
 
   // change path later
   public checkPasswordStrength(password: string) {
-    return this.http.post<boolean>(this.url + 'pass-strength', { password });
-  }
-
-  // change path later
-  public sendFile(password: string) {
-    return this.http.post<boolean>(this.url + 'sendfile', {password});
+    return this.http.post<PasswordMetadata>(this.url + 'pass-strength', { password });
   }
 
   logout() {

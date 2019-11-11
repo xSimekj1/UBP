@@ -13,7 +13,8 @@ export class SignupComponent implements OnInit, OnDestroy {
   username = '';
   password = '';
   passwordRepeat = '';
-
+  vulnerabilityMessage = ''
+  passwordIsValid: boolean;
   userAlreadyExists = false;
 
   private authServiceRegisterSub: Subscription;
@@ -56,12 +57,12 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   checkPasswordStrength() {
     this.authServicePassSub = this.authService.checkPasswordStrength(this.password).subscribe(
-      isValid => {
-        console.log(isValid);
-        if (isValid) {
-          console.log('NOT vulnerable af');
+      passwordMetadata => {
+        this.passwordIsValid = passwordMetadata.valid;
+        if (this.passwordIsValid) {
+          this.vulnerabilityMessage = 'Vaše heslo je dostatočné.';
         } else {
-          console.log('vulnerable af');
+          this.vulnerabilityMessage = passwordMetadata.details;
         }
       },
       error => {
