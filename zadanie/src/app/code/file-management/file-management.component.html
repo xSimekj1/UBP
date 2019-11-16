@@ -4,17 +4,33 @@
       <th>#</th>
       <th>Názov súboru</th>
       <th>Odosielateľ</th>
-      <th>Komentár</th>
       <th>Stiahnuť</th>
     </tr>
-    <tr *ngFor="let fileData of filesData; let i = index">
-      <td>{{ i+1 }}</td>
-      <td>{{ fileData.filename }}</td>
-      <td>{{ fileData.senderUsername }}</td>
-      <td>dummy komentár</td>
-      <td>
-        <img src="assets/download-button.svg" alt="download-image" class="svg-img" (click)="downloadFile(fileData)">
-      </td>
-    </tr>
+    <ng-container *ngFor="let fileData of filesData; let i = index">
+      <tr (click)="setCurrentFile(fileData)">
+        <td>{{ i+1 }}</td>
+        <td>{{ fileData.filename }}</td>
+        <td>{{ fileData.senderUsername }}</td>
+        <td *ngIf="fileData.downloadable">
+          <img src="assets/download-button.svg" alt="download-image" class="svg-img" (click)="downloadFile(fileData)">
+        </td>
+      </tr>
+    </ng-container>
   </table>
+</div>
+<div class="container" *ngIf="currentFile">
+  <h5>Komentátere k súboru
+    <b>{{ currentFile.filename }}</b> od
+    <b>{{ currentFile.senderUsername }}</b>
+  </h5>
+  <div class="comments-container">
+    <div class="comment-wrapper" *ngFor="let comment of currentFile.comments">
+      <p>{{ comment.content }}</p>
+      <p>{{ comment.commentedBy }}</p>
+    </div>
+    <div class="new-comment-wrapper">
+      <textarea #newComment>Pridaj nový komentár</textarea>
+      <button (click)="addComment(newComment.value)">Pridaj</button>
+    </div>
+  </div>
 </div>
