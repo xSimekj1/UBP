@@ -1,47 +1,20 @@
-<div class="container half-width">
-
-  <div class="divide-sides">
-    <div class="side-wrapper left">
-      <table>
-        <tr>
-          <th>#</th>
-          <th>Názov súboru</th>
-          <th>Odosielateľ</th>
-          <th>Stiahnuť</th>
-        </tr>
-        <tr *ngFor="let fileData of filesData; let i = index">
-          <td>{{ i+1 }}</td>
-          <td>{{ fileData.filename }}</td>
-          <td>{{ fileData.senderUsername }}</td>
-          <td>
-            <img src="assets/download-button.svg" alt="download-image" class="svg-img" (click)="downloadFile(fileData)">
-          </td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="side-wrapper right">
-      <div class="receiver-wrapper">
-        <label for="receiver-name">Meno Prijímateľa</label>
-        <input type="text" name="receiver-name" id="receiver-name" [(ngModel)]="receiver">
-      </div>
-      <div class="download-wrapper">
-        <input type="file"
-                name="send-file"
-                id="send-file"
-                (change)="loadFile($event.target.files[0])"
-                [disabled]="receiver.length < 3">
-      </div>
-      <div class="msg-wrapper">
-        <p class="success-msg" *ngIf="isSendingFileSuccessful; else unsuccess">{{ message }}</p>
-        <ng-template #unsuccess>
-          <p class="unsuccess-msg">{{ message }}</p>
-        </ng-template>
-      </div>
-      <button class="pretify-btn" (click)="sendFile()" [disabled]="receiver.length < 3">Odoslať</button>
-    </div>
-
-  </div>
-
+<div class="container">
+  <table>
+    <tr>
+      <th>#</th>
+      <th>Názov súboru</th>
+      <th>Odosielateľ</th>
+      <th>Komentár</th>
+      <th>Stiahnuť</th>
+    </tr>
+    <tr *ngFor="let fileData of filesData; let i = index">
+      <td>{{ i+1 }}</td>
+      <td>{{ fileData.filename }}</td>
+      <td>{{ fileData.senderUsername }}</td>
+      <td>dummy komentár</td>
+      <td>
+        <img src="assets/download-button.svg" alt="download-image" class="svg-img" (click)="downloadFile(fileData)">
+      </td>
+    </tr>
+  </table>
 </div>
-

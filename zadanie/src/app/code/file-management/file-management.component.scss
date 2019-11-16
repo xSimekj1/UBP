@@ -1,15 +1,6 @@
 .container {
   margin-top: 1rem;
-}
-
-.divide-sides {
-  display: flex;
-  justify-content: space-between;
-}
-
-.side-wrapper {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 1rem;
 }
 
 .svg-img {
@@ -17,64 +8,4 @@
   height: 24px;
   margin-left: 5px;
   cursor: pointer;
-}
-
-.left {
-  width: 100%;
-}
-
-.right {
-  // width: 40%;
-  padding: 1rem;
-}
-
-.receiver-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.receiver-wrapper input {
-  max-width: 15rem;
-}
-
-.download-wrapper {
-  display: inline-flex;
-  justify-content: flex-end;
-  margin-top: .5rem;
-}
-
-.msg-wrapper {
-  width: 100%;
-  margin: .5rem;
-}
-
-.msg-wrapper .success-msg {
-  color: green;
-}
-
-.msg-wrapper .unsuccess-msg {
-  color: red;
-}
-
-.pretify-btn {
-  background: linear-gradient(262deg, #ff7854, #fd267d);
-  border: none;
-  border-radius: 100px;
-  color: white;
-  min-height: 35px;
-  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.27);
-  padding: 10px 35px;
-  font-size: large;
-  width: 12rem;
-  cursor: pointer;
-  outline: none;
-  margin-top: .5rem;
-  margin-bottom: .5rem;
-}
-
-button:disabled,
-button[disabled]{
-  border: 1px solid #999999;
-  background: #cccccc;
-  color: #666666;
 }

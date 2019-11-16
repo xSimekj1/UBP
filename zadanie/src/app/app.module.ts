@@ -13,6 +13,7 @@ import { MenuComponent } from './code/menu/menu.component';
 import { ContentComponent } from './content/content.component';
 import { SignupComponent } from './code/signup/signup.component';
 import { FileManagementComponent } from './code/file-management/file-management.component';
+import { UploadComponent } from './code/file-management/upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FileManagementComponent } from './code/file-management/file-management.
     MenuComponent,
     ContentComponent,
     SignupComponent,
-    FileManagementComponent
+    FileManagementComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,
