@@ -6,7 +6,10 @@
       <b>{{ currentFile.senderUsername }}</b>
     </h5>
   </div>
-
+  <div>
+      Filtrovanie podľa komentáru
+      <input type="text" placeholder="Zadaj časť komentáru" [(ngModel)]="searchValue3">
+  </div>
   <div class="comments-container">
     <div class="new-comment-wrapper">
       <textarea maxlength="110"
@@ -18,7 +21,7 @@
       </div>
     </div>
 
-    <ng-container *ngFor="let comment of currentFile.comments">
+    <ng-container *ngFor="let comment of currentFile.comments | filter :'content' : searchValue3 : 'includes'">
       <div class="comment-wrapper">
         <div class="user-icon-wrapper">
           <img src="assets/user.svg" alt="user-img" class="user-icon">

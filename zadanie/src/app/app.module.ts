@@ -15,6 +15,7 @@ import { SignupComponent } from './code/signup/signup.component';
 import { FileManagementComponent } from './code/file-management/file-management.component';
 import { UploadComponent } from './code/file-management/upload/upload.component';
 import { CommentComponent } from './code/comment/comment.component';
+import { FilterPipe } from './code/file-management/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CommentComponent } from './code/comment/comment.component';
     SignupComponent,
     FileManagementComponent,
     UploadComponent,
-    CommentComponent
+    CommentComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

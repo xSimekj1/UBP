@@ -1,5 +1,20 @@
 <div class="container">
   <table>
+      <tr>
+        <td>
+          Filtrovanie podľa názvu
+          <br>
+          <input type="text" placeholder="Zadaj názov" [(ngModel)]="searchValue">
+        </td>
+        <td>
+          Súbory určené pre mňa
+          <input
+          type="checkbox"
+          [(ngModel)]="searchValue2">
+        </td>
+      </tr>
+  </table>
+  <table>
     <tr>
       <th>#</th>
       <th>Názov súboru</th>
@@ -7,7 +22,7 @@
       <th>Stiahnuť</th>
       <th>Počet komentárov</th>
     </tr>
-    <ng-container *ngFor="let fileData of filesData; let i = index">
+    <ng-container *ngFor="let fileData of filesData | filter :'filename' : searchValue : 'includes'| filter :'downloadable' : searchValue2 : 'equal'; let i = index ">
       <tr (click)="setCurrentFile(fileData)">
         <td>{{ i+1 }}</td>
         <td>{{ fileData.filename }}</td>
