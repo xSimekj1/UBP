@@ -1,22 +1,3 @@
-.divide-sides {
-  display: flex;
-  justify-content: space-between;
-}
-
-.side-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.left {
-  width: 100%;
-}
-
-.right {
-  // width: 40%;
-  padding: 1rem;
-}
-
 .receiver-wrapper {
   display: flex;
   flex-direction: column;
@@ -24,12 +5,6 @@
 
 .receiver-wrapper input {
   max-width: 15rem;
-}
-
-.download-wrapper {
-  display: inline-flex;
-  justify-content: flex-end;
-  margin-top: .5rem;
 }
 
 .msg-wrapper {
@@ -45,23 +20,94 @@
   color: red;
 }
 
-.pretify-btn {
-  background: linear-gradient(262deg, #ff7854, #fd267d);
-  border: none;
-  border-radius: 100px;
-  color: white;
-  min-height: 35px;
-  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.27);
-  padding: 10px 35px;
-  font-size: large;
-  width: 12rem;
-  cursor: pointer;
-  outline: none;
-  margin-top: .5rem;
-  margin-bottom: .5rem;
+.override {
+  background: white;
+  padding: 2rem;
+  max-width: 35rem;
+  max-height: 40rem;
+  justify-content: center;
+  align-items: center;
+  max-width: fit-content;
+  margin-bottom: 2rem;
 }
 
-button:disabled,
+.download-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: .5rem;
+}
+
+.file-input {
+  position: absolute;
+  z-index: 2;
+  opacity: 0%;
+  width: 15rem;
+  height: 15rem;
+  cursor: pointer;
+}
+
+.do-not-mind-me {
+  width: 15rem;
+  height: 15rem;
+  border-radius: .5rem;
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.nested-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.svg-img {
+  width: 48px;
+  height: 48px;
+}
+
+.btn-wrapper {
+  margin: .3rem 0 .5rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.comment-btn {
+  color: #007bff;
+  border-color: #007bff;
+  border: none;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid #007bff;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,
+    background-color .15s ease-in-out,
+    border-color .15s ease-in-out,
+    box-shadow .15s ease-in-out;
+}
+
+.comment-btn:hover {
+  color: white;
+  background: #007bff;
+}
+
+.comment-btn:disabled,
 button[disabled]{
   border: 1px solid #999999;
   background: #cccccc;

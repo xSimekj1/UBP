@@ -39,7 +39,7 @@ input[type=text], input[type=password] {
     &:focus {
         outline: none;
         background-color: #fff;
-        border-bottom-color: #6200ee;
+        border-bottom-color: orange;
         border-radius: 5px 5px 0 0 ;
         transition: 0.3s;
     }

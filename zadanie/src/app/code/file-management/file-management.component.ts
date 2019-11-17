@@ -56,4 +56,12 @@ export class FileManagementComponent implements OnInit {
     this.fileService.updateComments(this.currentFile.id, comment);
   }
 
+  isCurrentUserSender(): boolean {
+    return sessionStorage.getItem('username') === this.currentFile.senderUsername;
+  }
+
+  updateReceivers(receiverName: string) {
+    this.fileService.updateReceivers(receiverName, this.currentFile.id);
+  }
+
 }

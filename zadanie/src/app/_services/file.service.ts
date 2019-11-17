@@ -20,7 +20,7 @@ export class FileService {
 
   constructor(private http: HttpClient, private authService: AuthenticationService) { }
 
-  public sendFile(data: FormData) {
+  public sendFile(data: FormData): Observable<boolean> {
     data.append('sender', sessionStorage.getItem('username'));
     const headers = {
       Authorization: 'Bearer ' + this.authService.getJWToken()
@@ -29,13 +29,18 @@ export class FileService {
     return this.http.post<boolean>(this.url + 'send', data, { headers });
   }
 
-  public getFilesByUsername(): Observable<Array<FileMetadata>> {
-    const username: string = sessionStorage.getItem('username');
+  public updateReceivers(receiverName: string, fileId: number) {
     const headers = {
       Authorization: 'Bearer ' + this.authService.getJWToken()
     };
-
-    return this.http.get<Array<FileMetadata>>(this.url + `getall?username=${username}`, { headers });
+    return this.http.put(this.url + 'update-receivers', { receiver: receiverName, fileId: fileId }, { headers }).subscribe(
+      next => {
+        console.log('succesful filesharing');
+      },
+      error => {
+        console.log('UNsuccesful filesharing');
+      }
+    );
   }
 
   public getAllWithResctrictedDownload(): Observable<Array<FileMetadata>> {

@@ -5,32 +5,61 @@
       <th>Názov súboru</th>
       <th>Odosielateľ</th>
       <th>Stiahnuť</th>
+      <th>Počet komentárov</th>
     </tr>
     <ng-container *ngFor="let fileData of filesData; let i = index">
       <tr (click)="setCurrentFile(fileData)">
         <td>{{ i+1 }}</td>
         <td>{{ fileData.filename }}</td>
         <td>{{ fileData.senderUsername }}</td>
-        <td *ngIf="fileData.downloadable">
-          <img src="assets/download-button.svg" alt="download-image" class="svg-img" (click)="downloadFile(fileData)">
+        <td>
+          <img *ngIf="fileData.downloadable" src="assets/download-button.svg" alt="download-image" class="svg-img" (click)="downloadFile(fileData)">
         </td>
+        <td>{{ fileData.comments.length }}</td>
       </tr>
     </ng-container>
   </table>
 </div>
-<div class="container" *ngIf="currentFile">
-  <h5>Komentátere k súboru
-    <b>{{ currentFile.filename }}</b> od
-    <b>{{ currentFile.senderUsername }}</b>
-  </h5>
+
+<div class="container add-padding" *ngIf="currentFile">
+
+  <div class="header-wrapper">
+    <h5>Komentátere k súboru
+      <b>{{ currentFile.filename }}</b> od
+      <b>{{ currentFile.senderUsername }}</b>
+    </h5>
+  </div>
+
   <div class="comments-container">
-    <div class="comment-wrapper" *ngFor="let comment of currentFile.comments">
-      <p>{{ comment.content }}</p>
-      <p>{{ comment.commentedBy }}</p>
-    </div>
-    <div class="new-comment-wrapper">
-      <textarea #newComment>Pridaj nový komentár</textarea>
-      <button (click)="addComment(newComment.value)">Pridaj</button>
-    </div>
+      <div class="new-comment-wrapper">
+          <textarea maxlength="110"
+                    onfocus="if(this.value==this.defaultValue)this.value='';"
+                    onblur="if(this.value=='')this.value=this.defaultValue;"
+                    #newComment>Pridaj nový komentár</textarea>
+          <div class="btn-wrapper">
+            <button class="comment-btn" (click)="addComment(newComment.value)">Komentovať</button>
+          </div>
+        </div>
+    <ng-container *ngFor="let comment of currentFile.comments">
+
+      <div class="comment-wrapper">
+        <div class="user-icon-wrapper">
+            <img src="assets/user.svg" alt="user-img" class="user-icon">
+          </div>
+          <div class="message-wrapper">
+            <span class="username">{{ comment.commentedBy }}</span>
+            <span class="message">{{ comment.content }}</span>
+          </div>
+      </div>
+
+      <div class="sender-functions-wrapper">
+        <button *ngIf="isCurrentUserSender()"
+                class="comment-btn approve-btn"
+                title="Umožní zdieľať súbor so žiadateľom">Schváliť</button>
+      </div>
+    </ng-container>
+
+
+
   </div>
 </div>
