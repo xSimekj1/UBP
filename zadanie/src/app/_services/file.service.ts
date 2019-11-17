@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationService } from './auth.service';
 import { FileMetadata } from '../_models/file-meta-data.model';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Comment } from '../_models/comment.model';
 
 interface CommentRequest {
@@ -17,6 +17,7 @@ interface CommentRequest {
 export class FileService {
 
   private readonly url = 'api/file/';
+  public currentFile$: BehaviorSubject<FileMetadata> = new BehaviorSubject<FileMetadata>(Object());
 
   constructor(private http: HttpClient, private authService: AuthenticationService) { }
 

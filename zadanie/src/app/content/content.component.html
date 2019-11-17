@@ -2,4 +2,8 @@
 <app-keys></app-keys>
 <app-code></app-code>
 <app-file-management></app-file-management>
-<app-upload></app-upload>
+<div class="neat-container">
+  <app-comment *ngIf="showComments"></app-comment>
+  <app-upload></app-upload>
+</div>
+

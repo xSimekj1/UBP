@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FileService } from '../_services/file.service';
 
 @Component({
   selector: 'app-content',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContentComponent implements OnInit {
 
-  constructor() { }
+  showComments = false;
+
+  constructor(private fileService: FileService) { }
 
   ngOnInit() {
+    this.fileService.currentFile$.subscribe(
+      next => {
+        this.showComments = true;
+      }
+    )
   }
 
 }

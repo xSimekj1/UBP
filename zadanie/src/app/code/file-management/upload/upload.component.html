@@ -9,8 +9,8 @@
     <input type="file"
             name="send-file"
             id="send-file"
-            (change)="loadFile($event.target.files[0])"
             [disabled]="receiver.length < 3"
+            (change)="loadFile($event.target.files[0])"
             class="file-input">
     <div class="do-not-mind-me">
       <div class="nested-wrapper">
@@ -27,9 +27,9 @@
     </ng-template>
   </div>
 
-  <span class="filename">Zvolený súbor: {{ file.name }}</span>
+  <span class="filename">Zvolený súbor: {{ file === undefined? '' : file.name }}</span>
 
   <div class="btn-wrapper">
-    <button class="comment-btn" (click)="sendFile()" [disabled]="!file.name">Odoslať</button>
+    <button class="comment-btn" (click)="sendFile()" [disabled]="file === undefined">Odoslať</button>
   </div>
 </div>
