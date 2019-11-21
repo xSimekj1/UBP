@@ -30,8 +30,11 @@ export class LoginComponent implements OnInit {
       this.invalidLogin = false;
       this.loginSuccess = true;
       this.successMessage = 'Login Successful.';
+      if (data['role'] == '[ROLE_ADMIN]'){
+        sessionStorage.setItem('admin', 'true');
+      }
       this.router.navigate(['/content']);
-    }, () => {
+    }, () => {9
       this.invalidLogin = true;
       this.loginSuccess = false;
     });

@@ -22,6 +22,7 @@ export class MenuComponent implements OnInit {
   }
 
   handleLogout() {
+    sessionStorage.removeItem('admin');
     this.router.navigate(['./login']);
     this.authenticationService.logout();
   }

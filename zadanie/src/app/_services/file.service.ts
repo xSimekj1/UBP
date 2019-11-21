@@ -61,6 +61,17 @@ export class FileService {
     return this.http.post(this.url + 'download', fileMetadata, { responseType: 'blob', headers });
   }
 
+  public deleteFile(fileMetadata: FileMetadata) {
+    const headers = {
+      Authorization: 'Bearer ' + this.authService.getJWToken()
+    };
+    const options = {
+      headers: headers,
+      body: fileMetadata,
+    };
+    return this.http.delete(this.url + 'deletefile', options);
+  }
+  
   public updateComments(fileMetadataId: number, comment: Comment) {
     const headers = {
       Authorization: 'Bearer ' + this.authService.getJWToken()

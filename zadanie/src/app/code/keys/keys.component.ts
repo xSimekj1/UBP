@@ -21,8 +21,13 @@ export class KeysComponent implements OnInit {
   public getKeys(isNewKeys: boolean) {
     this.keysService.getKeys(isNewKeys).subscribe(
       keys => {
-        this.keyPair.privateK = keys.privateK;
-        this.keyPair.publicK = keys.publicK;
+        if (keys['privateK'] == null && keys['publicK'] == null){
+          alert('Neexistujú žiadne priradené kľúče. Prosím stlačte tlačidlo'+
+          ' Generuj kľúče');
+        }else{
+          this.keyPair.privateK = keys.privateK;
+          this.keyPair.publicK = keys.publicK;
+        }
       },
       error => {
         // TODO: log error

@@ -10,6 +10,7 @@ import { FileMetadata } from 'src/app/_models/file-meta-data.model';
 export class FileManagementComponent implements OnInit {
 
   public filesData: Array<FileMetadata>;
+  public adminUser = false;
 
   constructor(private fileService: FileService) {
     this.filesData = new Array<FileMetadata>();
@@ -17,6 +18,7 @@ export class FileManagementComponent implements OnInit {
 
   ngOnInit() {
     this.getFiles();
+    this.isUserAdmin();
   }
 
   getFiles() {
@@ -38,6 +40,21 @@ export class FileManagementComponent implements OnInit {
         saveAs(blob, fileMetadata.filename);
       }
     );
+  }
+
+  isUserAdmin(){
+    this.adminUser = ("true" == sessionStorage.getItem('admin'));
+  }
+
+  deleteFile(fileMetadata: FileMetadata) {
+    this.fileService.deleteFile(fileMetadata).subscribe(
+      (data) =>{
+        console.log("File deleted");
+        this.ngOnInit();
+      }),
+      err => {
+        console.log("Error");
+      }   
   }
 
   setCurrentFile(selectedFile: FileMetadata) {
