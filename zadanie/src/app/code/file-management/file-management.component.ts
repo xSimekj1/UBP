@@ -34,11 +34,24 @@ export class FileManagementComponent implements OnInit {
   }
 
   downloadFile(fileMetadata: FileMetadata) {
-    this.fileService.downloadFile(fileMetadata).subscribe(
+    this.fileService.downloadFile(fileMetadata, false).subscribe(
       file => {
         const blob = new Blob([file]);
         saveAs(blob, fileMetadata.filename);
-      }
+      },
+      err => {
+        alert("Error! The file was probably encrypted with your old public key." +
+        " The file will be downloaded encrypted, so you can" +
+        " decode it locally if you have stored your old private key. If not, ask for resend in comments.");
+        this.fileService.downloadFile(fileMetadata, true).subscribe(
+          file => {
+            const blob = new Blob([file]);
+            saveAs(blob, fileMetadata.filename);
+          },
+          err => {
+            alert("Error!");
+          })
+      } 
     );
   }
 

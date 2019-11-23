@@ -16,6 +16,7 @@ interface CommentRequest {
 })
 export class FileService {
 
+  // private readonly url: string = 'http://localhost:8080/api/file/';
   private readonly url = 'api/file/';
   public currentFile$: BehaviorSubject<FileMetadata> = new BehaviorSubject<FileMetadata>(Object());
 
@@ -53,12 +54,15 @@ export class FileService {
     return this.http.get<Array<FileMetadata>>(this.url + `getrestriced?username=${username}`, { headers });
   }
 
-  public downloadFile(fileMetadata: FileMetadata) {
+  public downloadFile(fileMetadata: FileMetadata, encrypted: boolean) {
     const headers = {
       Authorization: 'Bearer ' + this.authService.getJWToken()
     };
-
-    return this.http.post(this.url + 'download', fileMetadata, { responseType: 'blob', headers });
+    if (encrypted){
+      return this.http.post(this.url + 'downloadenc', fileMetadata, { responseType: 'blob', headers });
+    }else{
+      return this.http.post(this.url + 'download', fileMetadata, { responseType: 'blob', headers });
+    }
   }
 
   public deleteFile(fileMetadata: FileMetadata) {
