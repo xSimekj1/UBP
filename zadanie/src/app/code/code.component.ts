@@ -39,6 +39,9 @@ export class CodeComponent implements OnInit {
         this.encryptLoading = false;
         const blob = new Blob([encryptedFile]);
         saveAs(blob, 'encrypted.' + this.getType(this.fileToUpload.name));
+      },
+      error => {
+        console.log("Error encrypting file!");
       }
     );
   }
@@ -57,6 +60,9 @@ export class CodeComponent implements OnInit {
         this.decryptLoading = false;
         const blob = new Blob([encryptedFile], {type: 'application/x-tar'});
         saveAs(blob, 'decrypted.' +  this.getType(this.fileToUpload.name));
+      },
+      error => {
+        alert('Error decrypting file! You modified the file or inserted a wrong private key.')
       }
     );
   }
