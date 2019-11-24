@@ -16,6 +16,7 @@ export class KeysComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getKeys(false);
   }
 
   public getKeys(isNewKeys: boolean) {
